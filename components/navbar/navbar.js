@@ -46,6 +46,9 @@ function renderLoggedIn() {
   navOptions.innerHTML = `
       <div class="flex logged-in">
         <div>
+          <a href="" class="send-request-nav nav-option" data-navigo>Send Friend Request</a>
+        </div>
+        <div>
           <a href="" class="profile-nav nav-option" data-navigo>Profile</a>
         </div>
         <div>
@@ -53,8 +56,10 @@ function renderLoggedIn() {
         </div>
       </div>`;
 
+  const sendRequest = document.querySelector('.send-request-nav');
   const profile = document.querySelector('.profile-nav');
   const logout = document.querySelector('.logout-nav');
+  sendRequest.setAttribute('href', '/requests');
   profile.setAttribute('href', '/profile');
   logout.setAttribute('href', window.location.hash);
 

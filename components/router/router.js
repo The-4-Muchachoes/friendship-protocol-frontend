@@ -1,10 +1,9 @@
-// Written by everyone
-
 import renderNavbar from '../navbar/navbar.js';
 import renderMain from '/pages/main/main.js';
 import renderSignup from '/pages/signup/signup.js';
 import renderLogin from '../../pages/login/login.js';
-import renderOrders from '../../pages/profile/profile.js';
+import renderProfile from '../../pages/profile/profile.js';
+import renderRequest from '../../pages/send-friend-request/request.js';
 
 export default () => {
   const router = new Navigo('/', { hash: true });
@@ -24,7 +23,10 @@ export default () => {
         console.log('User requested signup page');
       },
       profile: () => {
-        renderOrders().then(router.updatePageLinks);
+        renderProfile().then(router.updatePageLinks);
+      },
+      requests: () => {
+        renderRequest().then(router.updatePageLinks);
       },
     })
     .on({
