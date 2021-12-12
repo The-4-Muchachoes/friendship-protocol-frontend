@@ -38,10 +38,16 @@ function handleLoginFunctionality() {
           // navigating to the users route. Using the global window.router
           // window.router.navigate(`/user/${data.id}`);
           window.location.href = '/#/profile';
+        } else if (data.error) {
+          if (data.status == 404) {
+            displayMessage('User not found');
+          } else displayMessage('something went wrong');
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   });
+}
+
+function displayMessage(message) {
+  const errorMessage = document.querySelector('.message');
+  errorMessage.innerHTML = message;
 }
