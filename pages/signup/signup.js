@@ -38,7 +38,9 @@ function handleSignInFunctionality() {
           displayMessage('User signup successful');
           window.location.href = '/#/profile';
         } else if (data.error) {
-          displayMessage(data.message);
+          if (data.status == 302) {
+            displayMessage('Email already registered');
+          } else displayMessage('something went wrong');
         }
       });
   });
