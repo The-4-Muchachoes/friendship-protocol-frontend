@@ -113,13 +113,15 @@ function getFriendsHtml(friends) {
       <tbody>`;
 
   friends.forEach((friend) => {
+    const email = friend.email;
+    const host = friend.host.replace('http://', '').replace('http://');
     friendTable += `
       <tr>
-        <td>${friend.email}</td>
-        <td>${friend.host}</td>
+        <td>${email}</td>
+        <td>${host}</td>
         <td>
-          <button class="remove" name="${friend.email} ${friend.host}">Remove</button>
-          <button class="block" name="${friend.email} ${friend.host}">Block</button>
+          <button class="remove" name="${email} ${friend.host}">Remove</button>
+          <button class="block" name="${email} ${friend.host}">Block</button>
         </td>
       </tr>`;
   });
@@ -138,14 +140,16 @@ function getRequestsHtml(requests) {
     <tbody>`;
 
   requests.forEach((request) => {
+    const email = request.email;
+    const host = request.host.replace('http://', '').replace('http://');
     requestsTable += `
       <tr>
-        <td>${request.email}</td>
-        <td>${request.host}</td>
+        <td>${email}</td>
+        <td>${host}</td>
         <td>
-          <button class="accept" name="${request.email} ${request.host}">Accept</button>
-          <button class="deny" name="${request.email} ${request.host}">Deny</button>
-          <button class="block" name="${request.email} ${request.host}">Block</button>
+          <button class="accept" name="${email} ${request.host}">Accept</button>
+          <button class="deny" name="${email} ${request.host}">Deny</button>
+          <button class="block" name="${email} ${request.host}">Block</button>
         </td>
       </tr`;
   });
@@ -154,8 +158,8 @@ function getRequestsHtml(requests) {
   return requestsTable;
 }
 
-function getBlockedUsersHtml(requests) {
-  let requestsTable = `
+function getBlockedUsersHtml(blockedUsers) {
+  let blockedUsersTable = `
   <h3 class="ta-center">Blocked Users</h3>
   <table class="ta-left w100">
     <thead>
@@ -163,16 +167,18 @@ function getBlockedUsersHtml(requests) {
     </thead>
     <tbody>`;
 
-  requests.forEach((request) => {
-    requestsTable += `
+  blockedUsers.forEach((blocked) => {
+    const email = blocked.email;
+    const host = blocked.host.replace('http://', '').replace('http://');
+    blockedUsersTable += `
       <tr>
-        <td>${request.email}</td>
-        <td>${request.host}</td>
+        <td>${email}</td>
+        <td>${host}</td>
       </tr`;
   });
 
-  requestsTable += `</tbody></table>`;
-  return requestsTable;
+  blockedUsersTable += `</tbody></table>`;
+  return blockedUsersTable;
 }
 
 /* 
