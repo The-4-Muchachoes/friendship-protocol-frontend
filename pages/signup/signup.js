@@ -36,7 +36,7 @@ function handleSignInFunctionality() {
           // Saving the JWT to local storage
           localStorage.setItem('user', JSON.stringify(data));
           displayMessage('User signup successful');
-          window.location.href = '/profile';
+          window.location.href = '/#/profile';
         } else if (data.error) {
           displayMessage(data.message);
         }

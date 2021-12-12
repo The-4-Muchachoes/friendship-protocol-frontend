@@ -6,7 +6,7 @@ export default () => {
     window.location.host.indexOf('localhost') != -1;
 
   const localApiUrl = 'http://localhost:8080';
-  const prodApiUrl = 's';
+  const prodApiUrl = 'http://fsps.jazzymcjazz.dk';
 
   window.apiUrl = isLocalhost ? localApiUrl : prodApiUrl;
 };
